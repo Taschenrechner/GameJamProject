@@ -23,14 +23,14 @@ public class RobotTurn : MonoBehaviour {
             float x;
             float y;
             platformCol = other.gameObject.GetComponent<Collider>();
-            Vector3 pl = platformCol.bounds.size;
+            Vector3 pl = other.transform.position;
             x = Math.Abs(pl[0]);
             robotCol = other.gameObject.GetComponent<Collider>();
-            Vector3 ro = robotCol.bounds.size;
-            y = Math.Abs(ro[0]);
+            Vector3 ro = transform.position;
+            y = Mathf.Abs(ro[0]);
             if (t <= x/2 - y/2) {
                 isInsideCollider = true;
-                Debug.Log("InsideColl");
+                Debug.Log(t);
             }
             else
             {
