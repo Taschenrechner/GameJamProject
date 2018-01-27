@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SteamfieldTrigger : MonoBehaviour {
 
+    public bool activated;
+
     void Start()
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -11,10 +13,15 @@ public class SteamfieldTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && activated)
         {
             gameObject.GetComponent<BoxCollider>().enabled = true;
         }
+        else
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+            
     }
 
     private void OnTriggerExit(Collider other)

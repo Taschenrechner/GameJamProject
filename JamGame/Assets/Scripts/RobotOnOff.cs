@@ -9,13 +9,13 @@ public class RobotOnOff : MonoBehaviour
     public float moveSpeed = 1;
     public int forward = 0;
     public int backward = 0;
-    Vector3 roationaxis = new Vector3(0, 1, 0);
+    /*Vector3 roationaxis = new Vector3(0, 1, 0);
     public bool isInsideCollider;
-    public bool triggerState = true;
+    public bool triggerState = true;*/
 
     void Start()
     {
-        //robot = GetComponent<Rigidbody>();
+        GameManager.instance.robotmoveable = true;
     }
 
     int Toggle(int x)
@@ -27,6 +27,15 @@ public class RobotOnOff : MonoBehaviour
             x = 0;
         }
         return x;
+    }
+
+    private void Update()
+    {
+        if(GameManager.instance.robotmoveable == false)
+        {
+            forward = 0;
+            backward = 0;
+        }
     }
 
     // Update is called once per frame
@@ -51,40 +60,43 @@ public class RobotOnOff : MonoBehaviour
             backward = Toggle(backward);
             forward = 0;
         }
-
-        if (forward == 1 && GameManager.instance.energy >= 0.1)
+        if (GameManager.instance.robotmoveable)
         {
-            if (GameManager.instance.pushObject)
+            if (forward == 1 && GameManager.instance.energy >= 0.1)
             {
-                transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed/2);
-                GameManager.instance.energy -= 0.2f;
-            }
-            else
-            {
-                transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed);
-                GameManager.instance.energy -= 0.1f;
+                if (GameManager.instance.pushObject)
+                {
+                    transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed / 2);
+                    GameManager.instance.energy -= 0.2f;
+                }
+                else
+                {
+                    transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed);
+                    GameManager.instance.energy -= 0.1f;
+                }
+
             }
 
+            if (backward == 1 && GameManager.instance.energy >= 0.1)
+            {
+                if (GameManager.instance.pushObject)
+                {
+                    transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * moveSpeed / 2);
+                    GameManager.instance.energy -= 0.2f;
+                }
+                else
+                {
+                    transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * moveSpeed);
+                    GameManager.instance.energy -= 0.1f;
+                }
+
+            }
         }
-
-        if (backward == 1 && GameManager.instance.energy >= 0.1)
-        {
-            if (GameManager.instance.pushObject)
-            {
-                transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * moveSpeed / 2);
-                GameManager.instance.energy -= 0.2f;
-            }
-            else
-            {
-                transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * moveSpeed);
-                GameManager.instance.energy -= 0.1f;
-            }
-
-        }
+        
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "platform")
         {
@@ -129,5 +141,5 @@ public class RobotOnOff : MonoBehaviour
     {
         if (other.gameObject.tag == "platform")
             other.GetComponent<BoxCollider>().isTrigger = true;
-    }
+    }*/
 }

@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\RobotOnOff.cs" />
     <Compile Include="Assets\Scripts\RobotTurn.cs" />
     <Compile Include="Assets\Scripts\SteamfieldTrigger.cs" />
+    <Compile Include="Assets\Scripts\valve.cs" />
     <Compile Include="Assets\SpriteMan3D\Demo\Scripts\SceneSetup.cs" />
     <Compile Include="Assets\SpriteMan3D\Demo\Standard Assets\Utility\SmoothFollow.cs" />
     <Compile Include="Assets\SpriteMan3D\Scripts\PersonController.cs" />

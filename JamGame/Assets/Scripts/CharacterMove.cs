@@ -12,6 +12,9 @@ public class CharacterMove : MonoBehaviour
     public bool moveable = true;
     private KeyCombo charge = new KeyCombo(new string[] { "w", "a", "s", "d" });
     public GameObject oil;
+    public GameObject gear;
+    public GameObject wrench;
+    public GameObject wrenchobject;
 
     void Start()
     {
@@ -66,6 +69,32 @@ public class CharacterMove : MonoBehaviour
                 else if(Input.GetButtonDown("F") && !moveable)
                 {
                     moveable = true;
+                }
+
+            }
+            if (GameManager.instance.inventory[GameManager.instance.activeItem].Equals(gear))
+            {
+                if (Input.GetButtonDown("F"))
+                {
+                    
+                }
+                else if (Input.GetButtonDown("F"))
+                {
+                    
+                }
+
+            }
+            if (GameManager.instance.inventory[GameManager.instance.activeItem].Equals(wrench))
+            {
+                if (Input.GetButtonDown("F") && GameManager.instance.wrenchable)
+                {
+                    wrenchobject = GameManager.instance.wrenchableobject;
+                    wrenchobject.GetComponent<valve>().ActivateValve();
+                
+                }
+                else if (Input.GetButtonDown("F"))
+                {
+
                 }
 
             }

@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     private string stringOfItems;*/
     public GameObject pref;
     public GameObject parenpan;
+    public bool robotmoveable;
+    public bool wrenchable;
+    public bool gearable;
+    public GameObject wrenchableobject;
 
 
     void Awake()
@@ -42,9 +46,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //inGameMenu.enabled = false;
-        energy = 10;
+        energy = 100;
         activeItem = 0;
-        inventory[activeItem].GetComponent<Image>().rectTransform.sizeDelta = new Vector2(50, 50);
+        inventory[activeItem].GetComponent<Image>().rectTransform.sizeDelta = new Vector2(45, 45);
+        robotmoveable = true;
     }
 
     void OnGUI()
