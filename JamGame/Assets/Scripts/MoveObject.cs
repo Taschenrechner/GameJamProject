@@ -15,6 +15,7 @@ public class MoveObject : MonoBehaviour {
         if(other.gameObject.tag == "robot")
         {
             bod.isKinematic = false;
+            GameManager.instance.pushObject = true;
         }
     }
 
@@ -23,6 +24,7 @@ public class MoveObject : MonoBehaviour {
         if (other.gameObject.tag == "robot")
         {
             bod.isKinematic = true;
+            GameManager.instance.pushObject = false;
         }
     }
 }

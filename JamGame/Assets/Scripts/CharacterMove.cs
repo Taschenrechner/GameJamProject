@@ -11,6 +11,7 @@ public class CharacterMove : MonoBehaviour
     //public float Pfeil = 90f;
     public bool moveable = true;
     private KeyCombo charge = new KeyCombo(new string[] { "w", "a", "s", "d" });
+    public GameObject oil;
 
     void Start()
     {
@@ -56,7 +57,7 @@ public class CharacterMove : MonoBehaviour
     {
         if(other.gameObject.tag == "robot")
         {
-            if (GameManager.instance.activeItem == "oil")
+            if (GameManager.instance.inventory[GameManager.instance.activeItem].Equals(oil))
             {
                 if (Input.GetButtonDown("F") && moveable)
                 {

@@ -8,13 +8,23 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Canvas inGameMenu;
-    public bool menuOpen = false;
+    //public Canvas inGameMenu;
+    //public bool menuOpen = false;
     public float energy;
     public float maxEnergy = 100;
     public Slider currentEnergy;
     //public Panel Inventory;
-    public string activeItem;
+    public Text showInventory;
+    public int activeItem = 0;
+    public int nextItem;
+    public bool pushObject;
+    public List<GameObject> inventory = new List<GameObject>();
+    public GameObject currentItem;
+    /*private string[] arrayofItems;
+    private string stringOfItems;*/
+    public GameObject pref;
+    public GameObject parenpan;
+
 
     void Awake()
     {
@@ -33,15 +43,44 @@ public class GameManager : MonoBehaviour
     {
         //inGameMenu.enabled = false;
         energy = 10;
+        activeItem = 0;
+        inventory[activeItem].GetComponent<Image>().rectTransform.sizeDelta = new Vector2(50, 50);
     }
 
     void OnGUI()
     {
+        inventory[activeItem].gameObject.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(50, 50);
         currentEnergy.value = energy;
+        /*if (inventory.Count == 0)
+        {
+            showInventory.text = "Inventory Empty";
+        }
+        else
+        {
+            arrayofItems = inventory.ToArray();
+            stringOfItems = string.Join("\n", arrayofItems);
+            showInventory.text = stringOfItems;
+        }*/
+
+        
+
+
+    }
+
+    void CycleItems(int x)
+    {
+        inventory[activeItem].GetComponent<Image>().rectTransform.sizeDelta = new Vector2(30, 30);
+        nextItem = (activeItem +x) % inventory.Count;
+        activeItem = nextItem;
+        inventory[activeItem].GetComponent<Image>().rectTransform.sizeDelta = new Vector2(50, 50);
     }
 
     void Update()
     {
+        if (Input.GetButtonDown("c"))
+        {
+            CycleItems(1);
+        }
 
         /*if (Input.GetButtonDown("Cancel") && menuOpen == true)
         {
@@ -53,9 +92,30 @@ public class GameManager : MonoBehaviour
             inGameMenu.enabled = true;
             menuOpen = true;
         }*/
+    }
 
+    public bool Addtoinv(GameObject additem)
+    {
+        if (inventory.Count <= 3)
+        {
+            inventory.Add(additem);
+            Image prefIm = additem.GetComponent<Image>();
+            prefIm.rectTransform.sizeDelta = new Vector2(30, 30);
+            //Instantiate(prefIm, parenpan.transform);
+            prefIm.transform.parent = parenpan.transform;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Inventory Full");
+            return false;
+        }
+    }
 
-
+    public void Deletefrominv(GameObject delitem)
+    {
+        inventory.Remove(delitem);
+        OnGUI();
     }
 
 }

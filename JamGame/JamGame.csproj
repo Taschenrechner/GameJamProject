@@ -83,12 +83,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterMove.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\KeyCombo.cs" />
     <Compile Include="Assets\Scripts\MoveObject.cs" />
     <Compile Include="Assets\Scripts\Platform.cs" />
     <Compile Include="Assets\Scripts\PlatformPull.cs" />
     <Compile Include="Assets\Scripts\RobotOnOff.cs" />
     <Compile Include="Assets\Scripts\RobotTurn.cs" />
+    <Compile Include="Assets\Scripts\SteamfieldTrigger.cs" />
     <Compile Include="Assets\SpriteMan3D\Demo\Scripts\SceneSetup.cs" />
     <Compile Include="Assets\SpriteMan3D\Demo\Standard Assets\Utility\SmoothFollow.cs" />
     <Compile Include="Assets\SpriteMan3D\Scripts\PersonController.cs" />

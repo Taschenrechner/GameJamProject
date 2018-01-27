@@ -54,14 +54,32 @@ public class RobotOnOff : MonoBehaviour
 
         if (forward == 1 && GameManager.instance.energy >= 0.1)
         {
-            transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed);
-            GameManager.instance.energy -= 0.1f;
+            if (GameManager.instance.pushObject)
+            {
+                transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed/2);
+                GameManager.instance.energy -= 0.2f;
+            }
+            else
+            {
+                transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed);
+                GameManager.instance.energy -= 0.1f;
+            }
+
         }
 
         if (backward == 1 && GameManager.instance.energy >= 0.1)
         {
-            transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * moveSpeed);
-            GameManager.instance.energy -= 0.1f;
+            if (GameManager.instance.pushObject)
+            {
+                transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * moveSpeed / 2);
+                GameManager.instance.energy -= 0.2f;
+            }
+            else
+            {
+                transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * moveSpeed);
+                GameManager.instance.energy -= 0.1f;
+            }
+
         }
 
     }
