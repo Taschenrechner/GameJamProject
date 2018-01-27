@@ -82,6 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterMove.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\KeyCombo.cs" />
+    <Compile Include="Assets\Scripts\MoveObject.cs" />
+    <Compile Include="Assets\Scripts\Platform.cs" />
+    <Compile Include="Assets\Scripts\PlatformPull.cs" />
     <Compile Include="Assets\Scripts\RobotOnOff.cs" />
     <Compile Include="Assets\Scripts\RobotTurn.cs" />
     <Compile Include="Assets\SpriteMan3D\Demo\Scripts\SceneSetup.cs" />
