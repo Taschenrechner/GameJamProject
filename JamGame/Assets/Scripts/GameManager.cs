@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public bool wrenchable;
     public bool gearable;
     public GameObject wrenchableobject;
+    public bool liftable;
+    public GameObject liftableObject;
 
 
     void Awake()
@@ -119,7 +121,17 @@ public class GameManager : MonoBehaviour
 
     public void Deletefrominv(GameObject delitem)
     {
+        Image[] allImages = parenpan.GetComponentsInChildren<Image>();
+        foreach(Image img in allImages)
+        {
+            if (img.gameObject.name == delitem.name)
+            {
+                Destroy(img.gameObject);
+                activeItem = 0;
+            }
+        }
         inventory.Remove(delitem);
+
         OnGUI();
     }
 

@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\KeyCombo.cs" />
+    <Compile Include="Assets\Scripts\LiftUp.cs" />
     <Compile Include="Assets\Scripts\MoveObject.cs" />
     <Compile Include="Assets\Scripts\Platform.cs" />
     <Compile Include="Assets\Scripts\PlatformPull.cs" />

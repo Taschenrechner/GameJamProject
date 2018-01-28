@@ -15,6 +15,7 @@ public class CharacterMove : MonoBehaviour
     public GameObject gear;
     public GameObject wrench;
     public GameObject wrenchobject;
+    public GameObject liftObject;
 
     void Start()
     {
@@ -76,13 +77,11 @@ public class CharacterMove : MonoBehaviour
             {
                 if (Input.GetButtonDown("F"))
                 {
-                    
+                    Debug.Log("Lifting?");
+                    liftObject = GameManager.instance.liftableObject;
+                    liftObject.GetComponent<LiftUp>().ActivateLift();
+                    GameManager.instance.Deletefrominv(gear);
                 }
-                else if (Input.GetButtonDown("F"))
-                {
-                    
-                }
-
             }
             if (GameManager.instance.inventory[GameManager.instance.activeItem].Equals(wrench))
             {
@@ -90,13 +89,9 @@ public class CharacterMove : MonoBehaviour
                 {
                     wrenchobject = GameManager.instance.wrenchableobject;
                     wrenchobject.GetComponent<valve>().ActivateValve();
-                
-                }
-                else if (Input.GetButtonDown("F"))
-                {
+                    GameManager.instance.Deletefrominv(wrench);
 
                 }
-
             }
         }
     }
